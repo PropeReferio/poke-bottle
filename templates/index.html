@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block content %}
+	<h3>Request a Pokemon by Name!</h3>
+	<form method="POST" action="/poke">
+		Name: <input type="text" name="poke">
+		<input type="submit">
+	</form>
+{% endblock content %}

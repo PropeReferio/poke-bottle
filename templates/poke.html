@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+	<h2>PokeDex</h2>
+	<!-- <h4>My favorite poke is {{ favorite_poke }}</h4> -->
+	{% if type2 %}
+		<h4>#{{ number }} {{ name }} is a {{ type1 }} and {{ type2 }} type Pokemon.</h4>
+	{% else %}
+		<h4>#{{ number }} {{ name }} is a {{ type1 }} type Pokemon.</h4>
+	{% endif %}
+{% endblock %}
