@@ -7,6 +7,12 @@ import os
 
 app = Flask(__name__)
 
+def get_poke_json(name):
+	return requests.get(f"https://pokeapi.co/api/v2/pokemon/{name}", verify=False)
+
+def get_poke_type_1(name):
+	return get_poke_json(name).json()['types'][0]['type']['name'].capitalize()
+
 @app.route('/')
 def index():
 	return render_template('index.html')
@@ -14,7 +20,7 @@ def index():
 @app.route('/poke', methods=['POST'])
 def poke():
 	name = request.form['poke'].lower()
-	r = requests.get(f"https://pokeapi.co/api/v2/pokemon/{name}").json()
+	r = get_poke_json(name).json()
 	name = r['name'].capitalize()
 	number = r['id']
 	type1 = r['types'][0]['type']['name'].capitalize()
